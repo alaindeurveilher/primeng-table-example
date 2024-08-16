@@ -16,7 +16,7 @@
   }
 }
 
-.telegrams-table {
+.my-datatable {
   font-size: 0.75rem;
   th {
     background-color: #2793efbf;
@@ -31,11 +31,11 @@
   }
 }
 
-.p-datatable.gemini-p-datatable-xs .p-datatable-tbody > tr > td {
+.p-datatable.my-p-datatable-xs .p-datatable-tbody > tr > td {
   padding: 0.125rem 0.25rem;
 }
 
-.telegrams-table.gemini-p-datatable-xs {
+.my-datatable.my-p-datatable-xs {
   font-size: 0.7rem;
 }
 

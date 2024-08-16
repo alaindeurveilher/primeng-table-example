@@ -57,7 +57,7 @@ export class DataService {
       : { bigTable: '50%', smallTable: '50%' }
   );
   tableClasses: string =
-    'p-datatable-gridlines p-datatable-striped telegrams-table p-datatable-sm gemini-p-datatable-xs';
+    'p-datatable-gridlines p-datatable-striped my-datatable p-datatable-sm my-p-datatable-xs';
   tableCellClasses: string = 'white-space-nowrap text-overflow-ellipsis';
   
   private getMMCountValue(telegram: Telegram): Variable['value'] | undefined {
