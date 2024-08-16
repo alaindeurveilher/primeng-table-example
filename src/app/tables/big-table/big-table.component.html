@@ -1,0 +1,39 @@
+<p-fieldset legend="Big Table 75%">
+  <p-table
+    [value]="dataService.telegrams()"
+    [resizableColumns]="true"
+    [scrollable]="true"
+    scrollDirection="both"
+    scrollHeight="flex"
+    [styleClass]="dataService.tableClasses"
+    sortMode="multiple"
+    selectionMode="single"
+    [(selection)]="dataService.selectedTelegramRow"
+    dataKey="uiId"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        @for (column of columns(); track column.field) {
+          <th pResizableColumn [pSortableColumn]="column.field" [class]="dataService.tableCellClasses">
+            {{ column.header }}
+            <p-sortIcon [field]="column.field" />
+          </th>
+        }
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-telegramRow>
+      <tr [pSelectableRow]="telegramRow">
+        @for (column of columns(); track column.field) {
+          <td [class]="dataService.tableCellClasses">
+            {{ telegramRow[column.field] }}
+          </td>
+        }
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td [colSpan]="columns().length" [class]="dataService.tableCellClasses">No items found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-fieldset>

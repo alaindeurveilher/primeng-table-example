@@ -1,0 +1,19 @@
+<p-table [value]="listVariables()" [styleClass]="dataService.tableClasses">
+  <ng-template pTemplate="header">
+    <tr>
+      <th colspan="3">{{ item().packetType }}</th>
+    </tr>
+    <tr>
+      <th [class]="dataService.tableCellClasses">{{ this.columns()['variableName'].header }}</th>
+      <th [class]="dataService.tableCellClasses">{{ this.columns()['content'].header }}</th>
+      <th [class]="dataService.tableCellClasses">{{ this.columns()['length'].header }}</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-variable>
+    <tr>
+      <td [class]="dataService.tableCellClasses">{{ variable?.name }}</td>
+      <td [class]="dataService.tableCellClasses">{{ variable?.value }}</td>
+      <td [class]="dataService.tableCellClasses">{{ variable?.length }}</td>
+    </tr>
+  </ng-template>
+</p-table>
