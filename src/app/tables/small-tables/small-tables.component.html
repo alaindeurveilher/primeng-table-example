@@ -1,4 +1,4 @@
-<p-fieldset legend="Small Tables 25%" class="h-3">
+<p-fieldset [legend]="legend()" class="h-3">
   @if (packets().length > 0) {
     <div class="flex gap-1">
       @for (packet of packets(); track packet.packetType) {

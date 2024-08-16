@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DataService } from '../services/data.service';
 import { BigTableComponent } from "./big-table/big-table.component";
 import { SmallTablesComponent } from "./small-tables/small-tables.component";
 
@@ -10,5 +11,5 @@ import { SmallTablesComponent } from "./small-tables/small-tables.component";
   styleUrl: './tables.component.css'
 })
 export class TablesComponent {
-
+  protected dataService: DataService = inject(DataService);
 }

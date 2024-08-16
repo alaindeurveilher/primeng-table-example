@@ -15,4 +15,5 @@ import { SmallTableComponent } from './small-table/small-table.component';
 export class SmallTablesComponent {
   private dataService: DataService = inject(DataService);
   packets: Signal<Packet[]> = computed(() => this.dataService.selectedPackets());
+  protected legend: Signal<string> = computed(() => `Small Tables ${this.dataService.splits().smallTable}`);
 }

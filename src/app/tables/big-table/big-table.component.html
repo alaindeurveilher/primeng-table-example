@@ -1,4 +1,4 @@
-<p-fieldset legend="Big Table 75%">
+<p-fieldset [legend]="legend()">
   <p-table
     [value]="dataService.telegrams()"
     [resizableColumns]="true"

@@ -20,4 +20,5 @@ export class BigTableComponent {
       header: TELEGRAMS_TABLE_COLUMNS[field].header,
     }))
   );
+  protected legend: Signal<string> = computed(() => `Big Table ${this.dataService.splits().bigTable}`);
 }

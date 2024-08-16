@@ -79,8 +79,8 @@ const getRandomItineraties = () => {
   providedIn: 'root'
 })
 export class DummyService {
-  generateDummyProject(): Project {
-    const bgsSequence: number[] = getSequence(10);
+  generateDummyProject(nbOfBgs: number = 10): Project {
+    const bgsSequence: number[] = getSequence(nbOfBgs);
     const nbOfMMCounts: number = 10;
     const getMMCountsSequence = () => getSequence(getRandomFrom(getSequence(nbOfMMCounts)), getRandomFrom(getSequence(mMCountMax - nbOfMMCounts)));
     const getRandomFunctions = () => getSequence(getRandomFrom(getSequence(3))).map((_) => getRandomFrom(bgFunctions));

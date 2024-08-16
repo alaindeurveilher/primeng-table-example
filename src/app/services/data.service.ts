@@ -8,7 +8,9 @@ import { DummyService } from './dummy.service';
 })
 export class DataService {
   private dummyService: DummyService = inject(DummyService);
-  readonly project: Signal<Project> = computed(() => this.dummyService.generateDummyProject());
+  nbOfBgs: WritableSignal<number> = signal<number>(10);
+  private projectState: WritableSignal<Project> = signal(this.dummyService.generateDummyProject(this.nbOfBgs()));
+  readonly project: Signal<Project> = computed(() => this.projectState());
   readonly telegrams: Signal<TableTelegramRow[]> = computed(
     () =>
       this.project().baliseGroups.flatMap(
@@ -48,6 +50,12 @@ export class DataService {
   );
   selectedTelegramRow: WritableSignal<TableTelegramRow | undefined> = signal<TableTelegramRow | undefined>(undefined);
   readonly selectedPackets: Signal<Packet[]> = computed(() => this.selectedTelegramRow()?.packets ?? []);
+  isSplitExtended: WritableSignal<boolean> = signal<boolean>(true);
+  splits = computed(() =>
+    this.isSplitExtended()
+      ? { bigTable: '75%', smallTable: '25%' }
+      : { bigTable: '50%', smallTable: '50%' }
+  );
   tableClasses: string =
     'p-datatable-gridlines p-datatable-striped telegrams-table p-datatable-sm gemini-p-datatable-xs';
   tableCellClasses: string = 'white-space-nowrap text-overflow-ellipsis';
@@ -58,5 +66,10 @@ export class DataService {
       ({ name }) => name === 'M_MCOUNT'
     )?.value;
     return mMCountValue;
+  }
+
+  generateData(): void {
+    this.selectedTelegramRow.set(undefined);
+    this.projectState.set(this.dummyService.generateDummyProject(this.nbOfBgs()));
   }
 }
